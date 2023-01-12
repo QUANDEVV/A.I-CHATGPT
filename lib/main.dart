@@ -32,7 +32,7 @@ class ChatPage extends StatefulWidget {
 }
 
 Future<String> generateResponse(String prompt) async {
-  final apiKey = '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';
+  final apiKey = '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';
 
   var url = Uri.https("api.openai.com", "/v1/completions");
   final response = await http.post(
@@ -73,16 +73,17 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
-        title: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            "OpenAI's ChatGPT Flutter Example \n@ngjunya",
-            maxLines: 2,
-            textAlign: TextAlign.center,
+      centerTitle: true,
+        toolbarHeight: 60,
+        title:  Padding(
+          padding: EdgeInsets.only(left:0),
+          child: Image.asset('assets/bot.png',
+          height: 50,
           ),
+        
         ),
         backgroundColor: botBackgroundColor,
+        
       ),
       backgroundColor: backgroundColor,
       body: SafeArea(
@@ -175,6 +176,8 @@ class _ChatPageState extends State<ChatPage> {
           enabledBorder: InputBorder.none,
           errorBorder: InputBorder.none,
           disabledBorder: InputBorder.none,
+          
+          
         ),
       ),
     );
@@ -216,11 +219,12 @@ class ChatMessageWidget extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       padding: const EdgeInsets.all(16),
       color: chatMessageType == ChatMessageType.bot
-          ? botBackgroundColor
+          ? Colors.black45
           : backgroundColor,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          
           chatMessageType == ChatMessageType.bot
               ? Container(
                   margin: const EdgeInsets.only(right: 16.0),
@@ -228,7 +232,7 @@ class ChatMessageWidget extends StatelessWidget {
                     backgroundColor: const Color.fromRGBO(16, 163, 127, 1),
                     child: Image.asset(
                       'assets/bot.png',
-                      color: Colors.white,
+                     
                       scale: 1.5,
                     ),
                   ),
@@ -240,6 +244,7 @@ class ChatMessageWidget extends StatelessWidget {
                       Icons.person,
                     ),
                   ),
+                  
                 ),
           Expanded(
             child: Column(
@@ -262,6 +267,7 @@ class ChatMessageWidget extends StatelessWidget {
             ),
           ),
         ],
+        
       ),
     );
   }
