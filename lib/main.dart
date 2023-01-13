@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 // import 'package:learning/constant.dart';
+import 'apikey/apikey.dart';
 import 'model.dart';
 
 void main() {
@@ -21,8 +22,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-const backgroundColor = Color(0xff343541);
+const backgroundColor = Colors.black45;
 const botBackgroundColor = Color(0xff444654);
+
+// const backgroundColor = Colors.black45;
+// const botBackgroundColor = Color.fromARGB(255, 15, 15, 15)
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -32,7 +36,7 @@ class ChatPage extends StatefulWidget {
 }
 
 Future<String> generateResponse(String prompt) async {
-  final apiKey = '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';
+
 
   var url = Uri.https("api.openai.com", "/v1/completions");
   final response = await http.post(
